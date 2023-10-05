@@ -1,0 +1,39 @@
+package com.hotel.hotel.dto;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@Schema(description = "Dto para insertar una habitacion")
+public class InsertRoomDTO {
+    @NotEmpty(message = "error.room.tipo")
+    @Size(max = 50, message = "error.room_longitud_tipo")
+    @Column(name = "type")
+    @Schema(description = "Tipo de la habitacion", example = "Individual")
+    private String type;
+
+    @NotNull(message = "error.room_capacidad")
+    @Column(name = "capacity")
+    @Schema(description = "Capacidad de la habitacion", example = "1")
+    private Integer capacity;
+
+    @NotNull(message = "error.room.precio")
+    @Column(name = "price")
+    @Schema(description = "Precio de la habitacion", example = "40")
+    private Long price;
+
+    @NotEmpty(message = "error.room.descripcion")
+    @Size(max = 500, message = "error.room.longitud_descripcion")
+    @Column(name = "descripcion")
+    @Schema(description = "Descripcion de la habitacion", example = "Habitacion con bonitas vistas")
+    private String descripcion;
+
+}
